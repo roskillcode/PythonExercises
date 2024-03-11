@@ -17,7 +17,18 @@ def randomiser():
     elif qnum in asked:
         randomiser()
         
-question_answers = []
+question_answers = {
+    1: ["What will be the output of the following code : print type(type(int))",
+        "type \'int\'",
+        "type \'type\'",
+        "Error",
+        "0"],
+    2: ["What is the output of the following code : L = ['a','b','c','d'] print("".join(L))",
+        "Error",
+        "None",
+        "abcd",
+        "L",]
+}
 
 
 class QuizStarter:
@@ -52,6 +63,7 @@ class QuizStarter:
         names_list.append(name)
         print(names_list)
         self.quiz_frame.destroy()
+        Quiz(root)
         
         
 class Quiz:
@@ -60,13 +72,19 @@ class Quiz:
         self.quiz_frame = Frame(parent, bg=background_color, padx=100, pady=100)
         self.quiz_frame.grid()
         
-        self.question_label = Label (self.quiz_frame,
-                                    text=question_answers[qnum][0],
-                                    font=("Tw Cen MT", "18", "bold"),
-                                    bg=background_color)
-        self.heading_label.grid(row=0)
+        randomiser()
+        
+        self.question_label = Label (self.quiz_frame, text=question_answers[qnum][0], font=("Tw Cen MT", "18", "bold"), bg=background_color)
+        self.question_label.grid(row=0)
+        
+        self.rb1=IntVar()
 
-
+        
+        self.rb1 = Radiobutton(self.quiz_frame, text=question_answers[qnum][1], font=("Helvetica", "12"), bg=background_color, value=1, variable=self.var1, pady=10, padx=10)
+        self.rb1.grid(row=1, sticky=W)
+        
+        
+    
 
 
 
