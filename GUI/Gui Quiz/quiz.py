@@ -1,12 +1,28 @@
 from tkinter import *
+import random 
 
 
 names_list = []
 
+global questions_answers
+asked = []
+score = 0
+
+
+def randomiser():
+    global qnum
+    qnum = random.randint(1,10)
+    if qnum not in asked:
+        asked.append(qnum)
+    elif qnum in asked:
+        randomiser()
+        
+question_answers = []
+
+
 class QuizStarter:
     def __init__(self, parent):
         background_color='OldLace'
-        
         self.quiz_frame = Frame(parent, bg=background_color, padx=100, pady=100)
         self.quiz_frame.grid()
         
@@ -38,7 +54,19 @@ class QuizStarter:
         self.quiz_frame.destroy()
         
         
+class Quiz:
+    def __init__(self, parent):
+        background_color='OldLace'
+        self.quiz_frame = Frame(parent, bg=background_color, padx=100, pady=100)
+        self.quiz_frame.grid()
         
+        self.question_label = Label (self.quiz_frame,
+                                    text=question_answers[qnum][0],
+                                    font=("Tw Cen MT", "18", "bold"),
+                                    bg=background_color)
+        self.heading_label.grid(row=0)
+
+
 
 
 
