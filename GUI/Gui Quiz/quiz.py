@@ -104,7 +104,6 @@ class QuizStarter:
         print(names_list)
         self.quiz_frame.destroy()
         Quiz(root)
-
         
         
 class Quiz:
